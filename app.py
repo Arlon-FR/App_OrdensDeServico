@@ -1,9 +1,5 @@
 #Lista de ordens de serviço
-ordens_de_servico = [
-    {"id": 1, "cliente": "João", "status": "Aberta"},
-    {"id": 2, "cliente": "Maria", "status": "Fechada"},
-    {"id": 3, "cliente": "Carlos",  "status": "Em andamento"}
-]
+ordens_de_servico = []
 
 def buscar_ordem_de_servico(id_busca):
     for ordem in ordens_de_servico:
@@ -26,8 +22,9 @@ def adicionar_ordem_de_servico():
 
 
 def atualizar_status_ordem():
+    #Atualiza a Ordem de Serviço pelo ID
     id_busca = int(input("Digite o ID da ordem de serviço que você quer atualizar: "))
-
+    #Encontra a Ordem de Serviço
     ordem_encontrada = buscar_ordem_de_servico(id_busca)
 
     if ordem_encontrada:
@@ -38,7 +35,7 @@ def atualizar_status_ordem():
     else:
         print("Ordem de serviço não encontrada")
 
-
+#Direciona para a função escolhida
 def main():
     while True:
         print("\nMenu:")
@@ -49,26 +46,29 @@ def main():
         
         escolha = input("Escolha uma opção: ")
         
-        if escolha == "1":
-            id_busca = int(input("Digite o ID da ordem de serviço que você quer buscar: "))
-            ordem_encontrada = buscar_ordem_de_servico(id_busca)
-            if ordem_encontrada:
-                print(f"Ordem de Serviço encontrada: {ordem_encontrada}")
-            else:
-                print("Ordem de Serviço não encontrada.")
-        
-        elif escolha == "2":
-            adicionar_ordem_de_servico()
-        
-        elif escolha == "3":
-            atualizar_status_ordem()
-        
-        elif escolha == "4":
-            print("Saindo do sistema.")
-            break
-        
-        else:
-            print("Opção inválida. Tente novamente.")
+        match escolha:
+            
+            case "1":
+                id_busca = int(input("Digite o ID da ordem de serviço que você quer buscar: "))
+                ordem_encontrada = buscar_ordem_de_servico(id_busca)
+                if ordem_encontrada:
+                    print(f"Ordem de Serviço encontrada: {ordem_encontrada}")
+                else:
+                    print("Ordem de Serviço não encontrada.")
+            
+            case "2":
+                adicionar_ordem_de_servico()
+            
+            case "3":
+                atualizar_status_ordem()
+            
+            case "4":
+                print("Saindo do sistema.")
+                break
+            
+            case _:
+                print("Opção inválida. Tente novamente.")
+
 
 # Chamar a função principal
 main()
