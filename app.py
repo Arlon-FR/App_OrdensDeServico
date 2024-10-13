@@ -35,6 +35,17 @@ def atualizar_status_ordem():
     else:
         print("Ordem de serviço não encontrada")
 
+def excluir_ordem_de_Servico():
+    id_busca = int(input("Digite o ID da Ordem de Serviço que deseja excluir: "))
+    ordem_encontrada = buscar_ordem_de_servico(id_busca)
+
+    if ordem_encontrada: 
+        ordens_de_servico.remove(ordem_encontrada)
+        print(f"Ordem de serviço {id_busca} excluída com sucesso.")
+    else:
+        print("Ordem de serviço não encontrada.")
+
+
 #Direciona para a função escolhida
 def main():
     while True:
@@ -42,7 +53,8 @@ def main():
         print("1. Buscar ordem de serviço")
         print("2. Adicionar nova ordem de serviço")
         print("3. Atualizar status de uma ordem de serviço")
-        print("4. Sair")
+        print("4. Excluir ordem de serviço")
+        print("5. Sair")
         
         escolha = input("Escolha uma opção: ")
         
@@ -61,8 +73,11 @@ def main():
             
             case "3":
                 atualizar_status_ordem()
-            
+
             case "4":
+                excluir_ordem_de_Servico()
+            
+            case "5":
                 print("Saindo do sistema.")
                 break
             
